@@ -1,0 +1,50 @@
+<svg width="390" height="844" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg" font-family="Inter, -apple-system, system-ui, sans-serif">
+  <!-- Tally — Onboarding: Savings Goal step. Matches Salary Setup pattern. -->
+  <!-- Tokens: canvas #F2F2F0, card #FFFFFF, ink #171717, grey #777777, black #000000, radius 12 -->
+  <rect width="390" height="844" fill="#F2F2F0"/>
+
+  <!-- Top bar: back arrow + step counter -->
+  <path d="M28 54 l-10 10 l10 10" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="18" y1="64" x2="36" y2="64" stroke="#171717" stroke-width="2" stroke-linecap="round"/>
+  <text x="362" y="69" text-anchor="end" font-size="13" font-weight="500" fill="#777777">3 of 4</text>
+
+  <!-- Title + subtitle -->
+  <text x="28" y="120" font-size="28" font-weight="700" fill="#171717">What are you</text>
+  <text x="28" y="152" font-size="28" font-weight="700" fill="#171717">saving for?</text>
+  <text x="28" y="182" font-size="14" font-weight="400" fill="#777777">Set money aside before you spend. Optional.</text>
+
+  <!-- Goal name input -->
+  <text x="28" y="222" font-size="12" font-weight="500" fill="#777777">GOAL NAME</text>
+  <rect x="28" y="234" width="334" height="56" rx="12" fill="#FFFFFF"/>
+  <text x="48" y="269" font-size="17" font-weight="500" fill="#171717">Emergency fund</text>
+
+  <!-- Target amount input -->
+  <text x="28" y="320" font-size="12" font-weight="500" fill="#777777">TARGET AMOUNT</text>
+  <rect x="28" y="332" width="334" height="56" rx="12" fill="#FFFFFF"/>
+  <text x="48" y="369" font-size="20" font-weight="600" fill="#171717">₹30,000</text>
+  <text x="342" y="368" text-anchor="end" font-size="12" font-weight="400" fill="#777777">optional</text>
+
+  <!-- Monthly contribution -->
+  <text x="28" y="420" font-size="12" font-weight="500" fill="#777777">SET ASIDE EACH MONTH</text>
+  <rect x="28" y="432" width="160" height="56" rx="12" fill="#171717"/>
+  <text x="48" y="461" font-size="17" font-weight="600" fill="#FFFFFF">₹3,000</text>
+  <text x="48" y="479" font-size="10" font-weight="400" fill="#AFAFAF">per month</text>
+  <rect x="200" y="432" width="162" height="56" rx="12" fill="#FFFFFF"/>
+  <text x="220" y="461" font-size="17" font-weight="600" fill="#171717">Auto</text>
+  <text x="220" y="479" font-size="10" font-weight="400" fill="#777777">from target date</text>
+
+  <!-- Info chip: how it affects budget -->
+  <rect x="28" y="508" width="334" height="76" rx="12" fill="#EAEAE7"/>
+  <circle cx="52" cy="536" r="9" fill="none" stroke="#777777" stroke-width="1.5"/>
+  <text x="52" y="540" text-anchor="middle" font-size="12" font-weight="700" fill="#777777">i</text>
+  <text x="72" y="533" font-size="13" font-weight="500" fill="#171717">Savings come off the top.</text>
+  <text x="72" y="553" font-size="12" font-weight="400" fill="#777777">₹16,000 salary − ₹3,000 saved =</text>
+  <text x="72" y="571" font-size="12" font-weight="600" fill="#171717">₹13,000 spendable this month.</text>
+
+  <!-- Skip link -->
+  <text x="195" y="716" text-anchor="middle" font-size="14" font-weight="500" fill="#777777">Skip for now</text>
+
+  <!-- Primary button -->
+  <rect x="28" y="740" width="334" height="60" rx="16" fill="#000000"/>
+  <text x="195" y="777" text-anchor="middle" font-size="16" font-weight="600" fill="#FFFFFF">Continue</text>
+</svg>

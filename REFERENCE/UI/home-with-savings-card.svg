@@ -1,0 +1,96 @@
+<svg width="390" height="844" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg" font-family="Inter, -apple-system, system-ui, sans-serif">
+  <!-- Tally — Home with Savings card. Matches existing Home pattern. -->
+  <!-- Tokens: canvas #F2F2F0, card #FFFFFF, ink #171717, grey #777777, black #000000, radius 12 -->
+  <rect width="390" height="844" fill="#F2F2F0"/>
+
+  <!-- Greeting + Next Salary chip -->
+  <text x="28" y="78" font-size="22" font-weight="600" fill="#171717">Hello, Yash 👋</text>
+  <text x="28" y="100" font-size="12" font-weight="400" fill="#777777">Here's your monthly overview.</text>
+  <rect x="284" y="52" width="78" height="46" rx="12" fill="#FFFFFF"/>
+  <text x="323" y="72" text-anchor="middle" font-size="9" font-weight="500" fill="#777777">NEXT SALARY</text>
+  <text x="323" y="88" text-anchor="middle" font-size="14" font-weight="600" fill="#171717">30 NOV</text>
+
+  <!-- Month header -->
+  <text x="28" y="146" font-size="16" font-weight="600" fill="#171717">November 2026</text>
+  <text x="362" y="146" text-anchor="end" font-size="10" font-weight="500" fill="#777777">1 – 30 NOV</text>
+
+  <!-- Available Balance card (now net of savings) -->
+  <rect x="28" y="164" width="334" height="150" rx="12" fill="#FFFFFF"/>
+  <text x="48" y="192" font-size="10" font-weight="500" fill="#777777">AVAILABLE BALANCE</text>
+  <text x="48" y="232" font-size="36" font-weight="600" fill="#171717">₹6,000</text>
+  <text x="48" y="256" font-size="13" font-weight="400" fill="#777777">of ₹13,000 spendable budget</text>
+  <rect x="48" y="272" width="294" height="6" rx="3" fill="#E6E6E3"/>
+  <rect x="48" y="272" width="158" height="6" rx="3" fill="#000000"/>
+  <text x="48" y="300" font-size="13" font-weight="600" fill="#171717">₹7,000 spent</text>
+  <text x="342" y="300" text-anchor="end" font-size="13" font-weight="500" fill="#777777">46% left</text>
+
+  <!-- NEW: Savings card with progress ring -->
+  <rect x="28" y="326" width="334" height="104" rx="12" fill="#FFFFFF"/>
+  <!-- progress ring -->
+  <g transform="translate(80,378)">
+    <circle r="30" fill="none" stroke="#E6E6E3" stroke-width="7"/>
+    <!-- 30% arc, starts at top, clockwise -->
+    <circle r="30" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round"
+            stroke-dasharray="56.5 188.5" transform="rotate(-90)"/>
+    <text y="5" text-anchor="middle" font-size="14" font-weight="600" fill="#171717">30%</text>
+  </g>
+  <text x="130" y="360" font-size="10" font-weight="500" fill="#777777">SAVINGS · EMERGENCY FUND</text>
+  <text x="130" y="388" font-size="20" font-weight="600" fill="#171717">₹9,000</text>
+  <text x="208" y="388" font-size="13" font-weight="400" fill="#777777">of ₹30,000</text>
+  <text x="130" y="410" font-size="12" font-weight="400" fill="#777777">₹3,000 set aside this month</text>
+
+  <!-- Action buttons -->
+  <rect x="28" y="446" width="162" height="56" rx="16" fill="#000000"/>
+  <text x="109" y="480" text-anchor="middle" font-size="15" font-weight="600" fill="#FFFFFF">+ Add Expense</text>
+  <rect x="200" y="446" width="162" height="56" rx="16" fill="#FFFFFF"/>
+  <text x="281" y="480" text-anchor="middle" font-size="15" font-weight="600" fill="#171717">+ Add Income</text>
+
+  <!-- Funded-by note -->
+  <rect x="28" y="516" width="14" height="14" rx="3" fill="none" stroke="#777777" stroke-width="1.4"/>
+  <text x="50" y="527" font-size="12" font-weight="400" fill="#777777">Funded by your 30 Oct salary</text>
+
+  <!-- Recent Transactions -->
+  <text x="28" y="564" font-size="17" font-weight="600" fill="#171717">Recent Transactions</text>
+  <text x="362" y="564" text-anchor="end" font-size="13" font-weight="400" fill="#777777">View all</text>
+
+  <!-- tx 1 -->
+  <rect x="28" y="582" width="36" height="36" rx="10" fill="#EFEFEC"/>
+  <text x="76" y="600" font-size="14" font-weight="600" fill="#171717">Grocery Shopping</text>
+  <text x="76" y="616" font-size="11" font-weight="400" fill="#777777">4 Nov · Food &amp; groceries</text>
+  <text x="362" y="606" text-anchor="end" font-size="14" font-weight="600" fill="#171717">−₹1,200</text>
+  <line x1="76" y1="632" x2="362" y2="632" stroke="#E6E6E3" stroke-width="1"/>
+
+  <!-- tx 2 -->
+  <rect x="28" y="640" width="36" height="36" rx="10" fill="#EFEFEC"/>
+  <text x="76" y="658" font-size="14" font-weight="600" fill="#171717">Electricity Bill</text>
+  <text x="76" y="674" font-size="11" font-weight="400" fill="#777777">3 Nov · Bills</text>
+  <text x="362" y="664" text-anchor="end" font-size="14" font-weight="600" fill="#171717">−₹850</text>
+  <line x1="76" y1="690" x2="362" y2="690" stroke="#E6E6E3" stroke-width="1"/>
+
+  <!-- tx 3: savings contribution -->
+  <rect x="28" y="698" width="36" height="36" rx="10" fill="#EFEFEC"/>
+  <text x="76" y="716" font-size="14" font-weight="600" fill="#171717">Moved to Savings</text>
+  <text x="76" y="732" font-size="11" font-weight="400" fill="#777777">1 Nov · Emergency fund</text>
+  <text x="362" y="722" text-anchor="end" font-size="14" font-weight="600" fill="#171717">−₹3,000</text>
+
+  <!-- Bottom tab bar -->
+  <line x1="0" y1="772" x2="390" y2="772" stroke="#E6E6E3" stroke-width="1"/>
+  <!-- Home (active) -->
+  <path d="M55 792 l10 -8 l10 8 v10 h-20 z" fill="none" stroke="#171717" stroke-width="1.8" stroke-linejoin="round"/>
+  <text x="65" y="822" text-anchor="middle" font-size="10" font-weight="600" fill="#171717">Home</text>
+  <!-- Insights -->
+  <g stroke="#777777" stroke-width="1.8" stroke-linecap="round">
+    <line x1="190" y1="802" x2="190" y2="790"/>
+    <line x1="197" y1="802" x2="197" y2="786"/>
+    <line x1="204" y1="802" x2="204" y2="794"/>
+  </g>
+  <text x="197" y="822" text-anchor="middle" font-size="10" font-weight="400" fill="#777777">Insights</text>
+  <!-- Settings -->
+  <g stroke="#777777" stroke-width="1.8" stroke-linecap="round">
+    <line x1="315" y1="790" x2="335" y2="790"/>
+    <circle cx="322" cy="790" r="3" fill="#F2F2F0"/>
+    <line x1="315" y1="800" x2="335" y2="800"/>
+    <circle cx="329" cy="800" r="3" fill="#F2F2F0"/>
+  </g>
+  <text x="325" y="822" text-anchor="middle" font-size="10" font-weight="400" fill="#777777">Settings</text>
+</svg>
