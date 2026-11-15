@@ -11,10 +11,11 @@
     "preview": {
       "distribution": "internal",
       "android": {
+        "buildType": "apk",
         "gradleCommand": ":app:assembleRelease -x lint -x lintVitalRelease -x :app:generateReleaseLintModel"
       },
       "env": {
-        "GRADLE_OPTS": "-Dorg.gradle.jvmargs=\"-Xmx4096m -XX:MaxMetaspaceSize=1024m\""
+        "GRADLE_OPTS": "-Dorg.gradle.jvmargs=\"-Xmx2560m -XX:MaxMetaspaceSize=512m\" -Dorg.gradle.workers.max=2"
       }
     },
     "production": {
