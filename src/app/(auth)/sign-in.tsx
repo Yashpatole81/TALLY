@@ -47,6 +47,7 @@ export default function SignIn() {
     try {
       await signInWithGoogle();
     } catch (error) {
+      console.error('[SIGN_IN] Google sign in error:', error);
       haptics.error();
       setFormError(friendlyError(error));
     } finally {

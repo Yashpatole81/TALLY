@@ -50,6 +50,7 @@ export default function SignUp() {
     try {
       await signInWithGoogle();
     } catch (error) {
+      console.error('[SIGN_UP] Google sign in error:', error);
       haptics.error();
       setFormError(friendlyError(error));
     } finally {

@@ -11,7 +11,10 @@ import { useFonts } from 'expo-font';
 import { type Href, type NativeStackNavigationOptions, Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
+import * as WebBrowser from 'expo-web-browser';
 import { useEffect } from 'react';
+
+WebBrowser.maybeCompleteAuthSession();
 import { ActivityIndicator, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';

@@ -1,3 +1,4 @@
+import Constants, { ExecutionEnvironment } from 'expo-constants';
 import * as Linking from 'expo-linking';
 import * as WebBrowser from 'expo-web-browser';
 import { Platform } from 'react-native';
@@ -11,7 +12,23 @@ export const AUTH_CALLBACK_PATH = 'auth/callback';
 export const PASSWORD_RESET_PATH = 'auth/reset';
 
 export function redirectUrl(path: string): string {
-  return Linking.createURL(path);
+  const cleanPath = path.replace(/^\/+/, '');
+  const hostUri = Constants.expoConfig?.hostUri;
+
+  // In Expo Go, deep links require the dev server host and the '/--/' prefix
+  // e.g. exp://192.168.1.42:8081/--/auth/callback
+  if (Constants.expoGoConfig || hostUri) {
+    if (hostUri) {
+      return `exp://${hostUri}/--/${cleanPath}`;
+    }
+    if (Constants.linkingUri) {
+      const base = Constants.linkingUri.replace(/\/--($|\/.*$)/, '').replace(/\/+$/, '');
+      return `${base}/--/${cleanPath}`;
+    }
+  }
+
+  // Standalone APK (EAS build) or production build: uses custom scheme (e.g. tally://auth/callback)
+  return Linking.createURL(cleanPath);
 }
 
 export async function signInWithEmail(email: string, password: string): Promise<void> {
@@ -63,11 +80,18 @@ export async function updatePassword(password: string): Promise<void> {
 export async function signInWithGoogle(): Promise<'success' | 'cancelled' | 'redirected'> {
   const client = requireSupabase();
   const redirectTo = redirectUrl(AUTH_CALLBACK_PATH);
+  console.log('[AUTH] >>> Starting Google Sign-In...');
+  console.log('[AUTH] App Redirect URL (redirectTo):', redirectTo);
+
   const { data, error } = await client.auth.signInWithOAuth({
     provider: 'google',
     options: { redirectTo, skipBrowserRedirect: true },
   });
-  if (error) throw error;
+  if (error) {
+    console.error('[AUTH] signInWithOAuth error:', error);
+    throw error;
+  }
+  console.log('[AUTH] Supabase OAuth URL:', data.url);
   if (!data.url) throw new Error('No OAuth URL returned');
   if (Platform.OS === 'web') {
     // Not a popup: the popup would load the whole app on /auth/callback, and both windows would
@@ -75,9 +99,16 @@ export async function signInWithGoogle(): Promise<'success' | 'cancelled' | 'red
     window.location.assign(data.url);
     return 'redirected';
   }
+  console.log('[AUTH] Opening browser session with WebBrowser.openAuthSessionAsync...');
   const result = await WebBrowser.openAuthSessionAsync(data.url, redirectTo);
-  if (result.type !== 'success') return 'cancelled';
+  console.log('[AUTH] WebBrowser result:', JSON.stringify(result));
+  if (result.type !== 'success') {
+    console.log('[AUTH] WebBrowser session ended without success. Type:', result.type);
+    return 'cancelled';
+  }
+  console.log('[AUTH] WebBrowser returned URL:', result.url);
   await completeAuthFromUrl(result.url);
+  console.log('[AUTH] >>> Google Sign-In SUCCESS!');
   return 'success';
 }
 
@@ -98,15 +129,28 @@ export async function completeAuthFromUrl(url: string): Promise<void> {
 }
 
 export async function completeAuthWithCode(code: string | undefined, linkError?: unknown): Promise<void> {
-  if (linkError) throw new Error(String(linkError));
-  if (!code) throw new Error('This link is invalid or has expired.');
-  if (exchangedCodes.has(code)) return;
+  console.log('[AUTH] completeAuthWithCode called.');
+  if (linkError) {
+    console.error('[AUTH] Link error received:', linkError);
+    throw new Error(String(linkError));
+  }
+  if (!code) {
+    console.error('[AUTH] No code found in redirect URL.');
+    throw new Error('This link is invalid or has expired.');
+  }
+  if (exchangedCodes.has(code)) {
+    console.log('[AUTH] Code already exchanged, skipping duplicate.');
+    return;
+  }
   exchangedCodes.add(code);
-  const { error } = await requireSupabase().auth.exchangeCodeForSession(code);
+  console.log('[AUTH] Exchanging PKCE code with Supabase...');
+  const { data, error } = await requireSupabase().auth.exchangeCodeForSession(code);
   if (error) {
+    console.error('[AUTH] exchangeCodeForSession failed:', error);
     exchangedCodes.delete(code);
     throw error;
   }
+  console.log('[AUTH] Session exchanged successfully for user:', data.user?.email);
 }
 
 /**
