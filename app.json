@@ -18,6 +18,7 @@
       "supportsTablet": false
     },
     "android": {
+      "package": "com.tally.app",
       "adaptiveIcon": {
         "backgroundColor": "#F2F2F0",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -66,11 +67,21 @@
       ],
       "expo-web-browser",
       "expo-font",
-      "expo-status-bar"
+      "./plugins/disable-lint.js"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "8f6a0efa-8101-4b5d-890d-43edf932d3ea"
+      }
     }
   }
 }

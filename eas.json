@@ -1,0 +1,34 @@
+{
+  "cli": {
+    "version": ">= 15.0.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease -x lint -x lintVitalRelease -x :app:generateReleaseLintModel"
+      },
+      "env": {
+        "GRADLE_OPTS": "-Dorg.gradle.jvmargs=\"-Xmx2560m -XX:MaxMetaspaceSize=512m\" -Dorg.gradle.workers.max=2"
+      }
+    },
+    "production": {
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease -x lint -x lintVitalRelease -x :app:generateReleaseLintModel"
+      },
+      "env": {
+        "GRADLE_OPTS": "-Dorg.gradle.jvmargs=\"-Xmx2560m -XX:MaxMetaspaceSize=512m\" -Dorg.gradle.workers.max=2"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
