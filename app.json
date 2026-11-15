@@ -67,7 +67,7 @@
       ],
       "expo-web-browser",
       "expo-font",
-      "expo-status-bar"
+      "./plugins/disable-lint.js"
     ],
     "experiments": {
       "typedRoutes": true,
