@@ -18,6 +18,7 @@
       "supportsTablet": false
     },
     "android": {
+      "package": "com.tally.app",
       "adaptiveIcon": {
         "backgroundColor": "#F2F2F0",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
